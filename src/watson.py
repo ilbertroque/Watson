@@ -17,6 +17,12 @@ with open('src/data.json', 'r') as json_file:
 folder_to_track = data['folder_to_track']
 destination_folder = data['destination_folder']
 
+def retrieve(track, extensions):
+    result = []
+    for element in extensions:
+        result.extend(glob.glob(os.path.join(track, "*" + element)))
+    return result
+
 #Executes when folder is modified
 class MyHandler(FileSystemEventHandler):
     def on_modified(self, event):
@@ -27,10 +33,10 @@ class MyHandler(FileSystemEventHandler):
         videoTypes = data['extensions']['video']
         musicTypes = data['extensions']['music']
 
-        files = glob.glob(os.path.join(folder_to_track, "*.rtf")) + glob.glob(os.path.join(folder_to_track, "*.txt")) + glob.glob(os.path.join(folder_to_track, "*.pdf")) + glob.glob(os.path.join(folder_to_track, "*.doc")) + glob.glob(os.path.join(folder_to_track, "*.docx")) + glob.glob(os.path.join(folder_to_track, "*.html")) + glob.glob(os.path.join(folder_to_track, "*.htm")) + glob.glob(os.path.join(folder_to_track, "*.xls")) + glob.glob(os.path.join(folder_to_track, "*.xlsx")) + glob.glob(os.path.join(folder_to_track, "*.ppt")) + glob.glob(os.path.join(folder_to_track, "*.pptx"))
-        images = glob.glob(os.path.join(folder_to_track, "*.jpeg")) + glob.glob(os.path.join(folder_to_track, "*.png")) + glob.glob(os.path.join(folder_to_track, "*.jpg")) + glob.glob(os.path.join(folder_to_track, "*.gif")) + glob.glob(os.path.join(folder_to_track, "*.tiff")) + glob.glob(os.path.join(folder_to_track, "*.cr2")) + glob.glob(os.path.join(folder_to_track, "*.psd"))
-        videos = glob.glob(os.path.join(folder_to_track, "*.mp4")) + glob.glob(os.path.join(folder_to_track, "*.webm")) + glob.glob(os.path.join(folder_to_track, "*.mpeg")) + glob.glob(os.path.join(folder_to_track, "*.mpg")) + glob.glob(os.path.join(folder_to_track, "*.m4p")) + glob.glob(os.path.join(folder_to_track, "*.m4v")) + glob.glob(os.path.join(folder_to_track, "*.mpv")) + glob.glob(os.path.join(folder_to_track, "*.avi")) + glob.glob(os.path.join(folder_to_track, "*.wmv")) + glob.glob(os.path.join(folder_to_track, "*.mov"))
-        music = glob.glob(os.path.join(folder_to_track, "*.mp3")) + glob.glob(os.path.join(folder_to_track, "*.wav")) + glob.glob(os.path.join(folder_to_track, "*.aac")) + glob.glob(os.path.join(folder_to_track, "*.pcm")) + glob.glob(os.path.join(folder_to_track, "*.aiff")) + glob.glob(os.path.join(folder_to_track, "*.ogg")) + glob.glob(os.path.join(folder_to_track, "*.wma"))
+        files = retrieve(folder_to_track, fileTypes)
+        images = retrieve(folder_to_track, imageTypes)
+        videos = retrieve(folder_to_track, videoTypes)
+        music = retrieve(folder_to_track, musicTypes)
         
         for file in files:
             copying = True
@@ -38,10 +44,8 @@ class MyHandler(FileSystemEventHandler):
             while copying:
                 size = os.path.getsize(file)
                 if size == size2:
-                    print(file + ' downloaded')
                     break
                 else:
-                    print(file + ' Downloading')
                     size2 = os.path.getsize(file )
                     time.sleep(2)
             dir = os.path.join(destination_folder, "Documents", currentMonthYear)
@@ -61,10 +65,8 @@ class MyHandler(FileSystemEventHandler):
             while copying:
                 size = os.path.getsize(file)
                 if size == size2:
-                    print(file + ' downloaded')
                     break
                 else:
-                    print(file + ' Downloading')
                     size2 = os.path.getsize(file )
                     time.sleep(2)
             dir = os.path.join(destination_folder, "Pictures", currentMonthYear)
@@ -84,10 +86,8 @@ class MyHandler(FileSystemEventHandler):
             while copying:
                 size = os.path.getsize(file)
                 if size == size2:
-                    print(file + ' downloaded')
                     break
                 else:
-                    print(file + ' Downloading')
                     size2 = os.path.getsize(file )
                     time.sleep(2)
             dir = os.path.join(destination_folder, "Movies", currentMonthYear)
@@ -107,10 +107,8 @@ class MyHandler(FileSystemEventHandler):
             while copying:
                 size = os.path.getsize(file)
                 if size == size2:
-                    print(file + ' Downloaded')
                     break
                 else:
-                    print(file + ' Downloading')
                     size2 = os.path.getsize(file )
                     time.sleep(2)
             dir = os.path.join(destination_folder, "Music", currentMonthYear)
