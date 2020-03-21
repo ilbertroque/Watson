@@ -1,0 +1,19 @@
+{
+    "config": {
+        "app_name": "Watson",
+        "app_icon": "/Users/ilbertroque/Documents/Projects/Watson/images/AnyConv.com__folder.icns",
+        "app_title": "Watson: Certified File Cleaner",
+        "break_message": "Downloads Classified and Moved!"
+    },
+
+    "folder_to_track": "/Users/ilbertroque/Downloads",
+
+    "destination_folder": "/Users/ilbertroque",
+
+    "extensions": {
+        "documents": [".rtf", ".pdf", ".txt", ".doc", ".docx", ".html", ".htm", ".xls", ".xlsx", ".ppt", ".pptx"],
+        "image": [".jpeg", ".jpg", ".png", ".gif", ".tiff", ".psd", ".cr2"],
+        "video": [".mp4", ".webm", ".mpeg", ".mpg", ".m4p", ".mpv", ".m4v", ".avi", ".wmv", ".mov"],
+        "music": [".mp3", ".wav", ".aac", ".pcm", ".aiff", ".ogg", ".wma"]
+    }
+}
