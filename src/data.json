@@ -2,7 +2,7 @@
     "config": {
         "app_name": "Watson",
         "app_icon": "/Users/ilbertroque/Documents/Projects/Watson/images/AnyConv.com__folder.icns",
-        "app_title": "Watson: Certified File Cleaner",
+        "app_title": "",
         "break_message": "Downloads Classified and Moved!"
     },
 

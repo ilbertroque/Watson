@@ -72,21 +72,11 @@ class MyHandler(FileSystemEventHandler):
 
 class WatsonApp(object):
     def __init__(self):
-        self.config = {
-            "app_name": "Watson",
-            "app_icon": "../images/AnyConv.com__folder.icns",
-            "app_title": "Watson: Certified File Cleaner",
-            "break_message": "Downloads Classified and Moved!"
-        }
-        self.app = rumps.App(self.config["app_name"], self.config["app_title"], self.config["app_icon"])
-        self.set_up_menu()
+        self.app = rumps.App(data['config']['app_name'], data['config']['app_title'], data['config']['app_icon'])
         handler = MyHandler()
         observer = Observer()
         observer.schedule(handler, data['folder_to_track'], recursive=True)
         observer.start()
-
-    def set_up_menu(self):
-        self.app.title = ""
 
     def run(self):
         self.app.run()
