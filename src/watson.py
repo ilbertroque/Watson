@@ -67,6 +67,7 @@ def classify(destination, files, types, date):
 
 #Executes when folder is modified
 class MyHandler(FileSystemEventHandler):
+    moveFiles()
     def on_modified(self, event):
         moveFiles()       
 
