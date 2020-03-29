@@ -9,7 +9,7 @@ import rumps
 from datetime import datetime
  
 def moveFiles():
-    r_file = open("data.json", "r")
+    r_file = open("src/data.json", "r")
     data = json.load(r_file)
     r_file.close()
 

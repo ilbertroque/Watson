@@ -14,14 +14,14 @@ class MyHandler(FileSystemEventHandler):
 
 class WatsonApp(object):
     def __init__(self):
-        r_file = open("data.json", "r")
+        r_file = open("src/data.json", "r")
         data = json.load(r_file)
         r_file.close()
         self.app = rumps.App(data['config']['app_name'], data['config']['app_title'], data['config']['menu_icon'])
         if data['destination_folder'] == "":
             data["destination_folder"] = input("Enter path to Home folder (e.x: /Users/yourname): ")
             data["folder_to_track"] = os.path.join(data["destination_folder"], "Downloads")
-            w_file = open("data.json", "w")
+            w_file = open("src/data.json", "w")
             json.dump(data, w_file, indent=4, separators=(",", ": "), sort_keys=True)
             w_file.close()
 
