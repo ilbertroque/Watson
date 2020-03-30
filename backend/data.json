@@ -3,10 +3,9 @@
         "app_name": "Watson",
         "app_title": "",
         "break_message": "Downloads Classified and Moved!",
-        "dock_icon": "../images/dock-icon.icns",
-        "menu_icon": "../images/menu-bar-icon.png"
+        "menu_icon": "images/menu-bar-icon.png"
     },
-    "destination_folder": "/Users/ilbertroque",
+    "destination_folder": "",
     "extensions": {
         "documents": [
             ".rtf",
@@ -52,5 +51,5 @@
             ".mov"
         ]
     },
-    "folder_to_track": "/Users/ilbertroque/Downloads"
+    "folder_to_track": ""
 }

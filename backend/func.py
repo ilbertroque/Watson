@@ -8,10 +8,7 @@ import time
 import rumps
 from datetime import datetime
  
-def moveFiles():
-    r_file = open("src/data.json", "r")
-    data = json.load(r_file)
-    r_file.close()
+def moveFiles(data):
 
     folder_to_track = data['folder_to_track']
     currentMonthYear = datetime.now().strftime('%B') + "-" + datetime.now().strftime('%y')
